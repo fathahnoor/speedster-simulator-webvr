@@ -134,6 +134,14 @@ navigator.getVRDisplays().then(function(displays) {
 	}
 });
 
+// load 3D model
+var loader = new THREE.ColladaLoader();
+loader.load('3dmodel/hero127.dae',function colladaReady(collada){
+player = collada.scene;
+skin = collada.skin[0];
+scene.add(player);
+});
+
 // Request animation frame loop function
 var lastRender = 0;
 function animate(timestamp) {
