@@ -56,10 +56,11 @@ canvas {
 
 	<div id='fullScreenContainer'>
 		<div style='position:absolute; top: 10px; width: 100%; text-align: center; font-family: Monospace; font-weight: bold; padding;color:grey; z-index: 1000;'>
-			Viewer of 360 content - using webvr and three.js
+			Speedster Simulator WebVR
 			<br/>
-			<a href='javascript:void(0)' onclick='switchSource("videoMono")' style='color: grey'>video 360</a>
-			<a href='javascript:void(0)' onclick='switchSource("imageMono")' style='color: grey'>image 360</a>
+      <br/>
+			<a href='javascript:void(0)' onclick='switchSource("videoMono")' style='color: grey'>[ START ]</a>
+			<!-- <a href='javascript:void(0)' onclick='switchSource("imageMono")' style='color: grey'>image 360</a> -->
 		</div>
 		<div id='buttons'>
 			<i class='fa fa-arrows-alt' id='fullscreenButton'></i>
@@ -225,16 +226,18 @@ function enterFullscreen (element) {
 //		Code Separator
 //////////////////////////////////////////////////////////////////////////////
 
-if( location.hash === '#imageMono' )	switchSource('imageMono')
-if( location.hash === '#videoMono' )	switchSource('videoMono')
-if( location.hash === '' )		switchSource('imageMono')
+//if( location.hash === '#imageMono' )	switchSource('imageMono')
+//if( location.hash === '#videoMono' )	switchSource('videoMono')
+//if( location.hash === '' )		switchSource('imageMono')
 
-var container = null
+var container = null;
+
+switchSource("imageMono");
 
 function switchSource(sourceType){
 	if( container )	container.parent.remove(container)
 	
-	location.hash = '#'+sourceType
+	//location.hash = '#'+sourceType
 	
 	if( sourceType === 'imageMono'){
 		container = createImageMono()
@@ -254,6 +257,7 @@ document.addEventListener('sourceChange', function onSourceChange(event){
 function createImageMono(){	
 	document.dispatchEvent(new CustomEvent('sourceChange', { detail : {sourceType: 'imageMono'}}));
 
+  /*
 	var geometry = new THREE.SphereGeometry( 500, 60, 40 );
 	geometry.scale( - 1, 1, 1 );
 
@@ -266,6 +270,7 @@ function createImageMono(){
 
 	var mesh = new THREE.Mesh( geometry, material );
 	return mesh;
+  */
 }
 
 var video = document.createElement( 'video' );
