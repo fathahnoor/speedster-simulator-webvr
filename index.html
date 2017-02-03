@@ -268,17 +268,20 @@ function createImageMono(){
 	return mesh;
 }
 
+var video = document.createElement( 'video' );
+video.defaultPlaybackRate = 10.0;
+
 function createVideoMono(){
 	var geometry = new THREE.SphereBufferGeometry( 500, 60, 40 );
 	geometry.scale( - 1, 1, 1 );
 
-	var video = document.createElement( 'video' );
+	//var video = document.createElement( 'video' );
 	video.width = 640;
 	video.height = 360;
 	video.autoplay = true;
 	video.loop = true;
 	// video.src = "videos/pano.webm";
-	video.src = "videos/pano.mp4";
+	video.src = "videos/gasibu_er_720.mp4";
 	var texture = new THREE.VideoTexture( video );
 	texture.minFilter = THREE.LinearFilter;
 	texture.format = THREE.RGBFormat;
